@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: library-events-producer
+  profiles:
+    active: local
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      key-serializer: org.apache.kafka.common.serialization;
+      value-serializer: org.apache.kafka.common.serialization;
+---
+spring:
+  config:
+    activate:
+      on-profile: non-prod
+  kafka:
+    producer:
+      bootstrap-servers: nonprod:9092,nonprod:9093,nonprod:9094
+      key-serializer: org.apache.kafka.common.serialization;
+      value-serializer: org.apache.kafka.common.serialization;
